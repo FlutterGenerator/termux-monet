@@ -114,7 +114,7 @@ su -c setprop persist.sys.fflag.override.settings_enable_monitor_phantom_procs f
 
 - On a Rooted phone with Magisk installed, flash the following module:
 
-    > [![](https://img.shields.io/static/v1?message=LetTheGhostsOut.zip&logo=magisk&labelColor=5c5c5c&color=00af9c&logoColor=white&label=%20&style=for-the-badge)](https://raw.githubusercontent.com/FlutterGenerator/termux-monet/master/ppr/PhantomProcessRetainer-main.zip)
+    > [![](https://img.shields.io/static/v1?message=LetTheGhostsOut.zip&logo=magisk&labelColor=5c5c5c&color=00af9c&logoColor=white&label=%20&style=for-the-badge)](https://raw.githubusercontent.com/Termux-Monet/termux-monet/master/ppr/PhantomProcessRetainer-main.zip)
 
 - After that, `PhantomProcessKiller might be deactivated on every device boot.` Please make an [issue](https://github.com/FlutterGenerator/termux-monet/issues) on this repo if the module didn't work for you.
 
