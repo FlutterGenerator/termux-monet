@@ -57,7 +57,7 @@ tasks.withType(JavaCompile) {
 
 dependencies {
     implementation "androidx.annotation:annotation:1.9.1"
-    testImplementation "junit:junit:4.13.2"
+    testImplementation "org.junit.jupiter:junit-jupiter-api:5.12.0-RC1"
 }
 
 task sourceJar(type: Jar) {
