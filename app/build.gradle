@@ -108,25 +108,25 @@ android {
 }
 
 dependencies {
-    implementation "androidx.annotation:annotation:1.8.0"
-    implementation "androidx.core:core:1.13.1"
+    implementation "androidx.annotation:annotation:1.9.1"
+    implementation "androidx.core:core:1.15.0"
     implementation "androidx.drawerlayout:drawerlayout:1.2.0"
     implementation "androidx.preference:preference:1.2.1"
-    implementation "androidx.viewpager:viewpager:1.1.0-alpha01"
+    implementation "androidx.viewpager2:viewpager2:1.1.0"
     implementation "com.google.android.material:material:1.12.0"
-    implementation "com.google.guava:guava:32.0.1-android"
-    implementation "io.noties.markwon:core:$markwonVersion"
-    implementation "io.noties.markwon:ext-strikethrough:$markwonVersion"
-    implementation "io.noties.markwon:linkify:$markwonVersion"
-    implementation "io.noties.markwon:recycler:$markwonVersion"
+    implementation "com.google.guava:guava:33.4.0-jre"
+    implementation "io.noties.markwon:core:4.6.2"
+    implementation "io.noties.markwon:ext-strikethrough:4.6.2"
+    implementation "io.noties.markwon:linkify:4.6.2"
+    implementation "io.noties.markwon:recycler:4.6.2"
     implementation 'com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava'
     implementation "com.github.misakmanukyan:RealtimeBlurView_v2:80d9939272"
     implementation project(":terminal-view")
     implementation project(":termux-shared")
     implementation project(":native-entrypoint")
     testImplementation "junit:junit:4.13.2"
-    testImplementation "org.robolectric:robolectric:4.13"
-    coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:2.1.2"
+    testImplementation "org.robolectric:robolectric:4.14.1"
+    coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:2.1.4"
 }
 
 tasks.withType(JavaCompile) {
