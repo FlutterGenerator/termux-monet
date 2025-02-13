@@ -9,7 +9,7 @@ concurrency:
 
 jobs:
   trigger-termux-library-builds:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-latest
     steps:
       - name: Set vars
         run: echo "TERMUX_LIB_VERSION=${GITHUB_REF/refs\/tags\/v/}" >> $GITHUB_ENV # Do not include "v" prefix
