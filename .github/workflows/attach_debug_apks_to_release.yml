@@ -7,7 +7,7 @@ on:
 
 jobs:
   attach-apks:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
@@ -22,7 +22,7 @@ jobs:
           ref: ${{ env.GITHUB_REF }}
 
       - name: Setup java 17 as required by gradle
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v4.7.0
         with:
           distribution: 'temurin'
           java-version: '17'
