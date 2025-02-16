@@ -4,6 +4,7 @@ apply plugin: 'maven-publish'
 android {
     namespace "com.termux.shared"
     compileSdkVersion project.properties.compileSdkVersion.toInteger()
+    ndkVersion "28.0.13004108"
 
     dependencies {
         implementation "androidx.appcompat:appcompat:1.7.0"
