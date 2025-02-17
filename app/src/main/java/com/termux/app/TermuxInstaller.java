@@ -359,18 +359,17 @@ final class TermuxInstaller {
         // Build.SUPPORTED_ABIS list) to avoid e.g. installing arm on an x86 system where arm
         // emulation is available.
         for (String androidArch : Build.SUPPORTED_ABIS) {
-        switch(androidArch) {
-            case "arm64-v8a":
-                return "aarch64";
-            case "armeabi-v7a":
-                return "arm";
-            case "x86_64":
-                return "x86_64";
-            case "x86":
-                return "i686";
-            case "riscv64":
-                return "riscv64";
+            switch(androidArch) {
+                case "arm64-v8a":
+                    return "aarch64";
+                case "armeabi-v7a":
+                    return "arm";
+                case "x86_64":
+                    return "x86_64";
+                case "x86":
+                    return "i686";
+            }
         }
+        throw new RuntimeException("Unable to determine arch from Build.SUPPORTED_ABIS =  " + Arrays.toString(Build.SUPPORTED_ABIS));
     }
-    throw new RuntimeException("Unable to determine arch from Build.SUPPORTED_ABIS =  " + Arrays.toString(Build.SUPPORTED_ABIS));
 }
