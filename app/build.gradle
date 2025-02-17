@@ -48,7 +48,7 @@ android {
                 enable ((gradle.startParameter.taskNames.any { it.contains("Debug") } && splitAPKsForDebugBuilds == "1") ||
                     (gradle.startParameter.taskNames.any { it.contains("Release") } && splitAPKsForReleaseBuilds == "1"))
                 reset()
-                include 'x86', 'x86_64', 'armeabi-v7a', 'arm64-v8a', 'riscv64'
+                include 'x86', 'x86_64', 'armeabi-v7a', 'arm64-v8a'
                 universalApk true
             }
         }
@@ -124,7 +124,7 @@ dependencies {
     implementation project(":terminal-view")
     implementation project(":termux-shared")
     implementation project(":native-entrypoint")
-    testImplementation "org.junit.jupiter:junit-jupiter-api:5.12.0-RC1"
+    testImplementation "org.junit.jupiter:junit-jupiter-api:5.12.0-RC2"
     testImplementation "org.robolectric:robolectric:4.14.1"
     coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:2.1.4"
 }
