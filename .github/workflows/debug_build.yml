@@ -67,7 +67,7 @@ jobs:
           fi
 
           echo "Validating APKs"
-          for abi in universal arm64-v8a armeabi-v7a x86_64 x86 riscv64; do
+          for abi in universal arm64-v8a armeabi-v7a x86_64 x86; do
             if ! test -f "$APK_DIR_PATH/${APK_BASENAME_PREFIX}_$abi.apk"; then
               files_found="$(ls "$APK_DIR_PATH")"
               exit_on_error "Failed to find built APK at '$APK_DIR_PATH/${APK_BASENAME_PREFIX}_$abi.apk'. Files found: "$'\n'"$files_found"
@@ -81,7 +81,6 @@ jobs:
             "${APK_BASENAME_PREFIX}_armeabi-v7a.apk" \
             "${APK_BASENAME_PREFIX}_x86_64.apk" \
             "${APK_BASENAME_PREFIX}_x86.apk" \
-            "${APK_BASENAME_PREFIX}_riscv64.apk" \
             > "${APK_BASENAME_PREFIX}_sha256sums"); then
             exit_on_error "Generate sha25sums failed for '$APK_VERSION_TAG' release."
           fi
@@ -124,15 +123,7 @@ jobs:
           name: ${{ env.APK_BASENAME_PREFIX }}_x86
           path: |
             ${{ env.APK_DIR_PATH }}/${{ env.APK_BASENAME_PREFIX }}_x86.apk
-            ${{ env.APK_DIR_PATH }}/output-metadata.json
-
-      - name: Attach riscv64 APK file
-        uses: actions/upload-artifact@v4
-        with:
-          name: ${{ env.APK_BASENAME_PREFIX }}_riscv64
-          path: |
-            ${{ env.APK_DIR_PATH }}/${{ env.APK_BASENAME_PREFIX }}_riscv64.apk
-            ${{ env.APK_DIR_PATH }}/output-metadata.json      
+            ${{ env.APK_DIR_PATH }}/output-metadata.json     
 
       - name: Attach sha256sums file
         uses: actions/upload-artifact@v4
