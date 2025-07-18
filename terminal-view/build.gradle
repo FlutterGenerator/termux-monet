@@ -1,0 +1,59 @@
+apply plugin: 'com.android.library'
+apply plugin: 'maven-publish'
+
+android {
+    namespace = "com.termux.view"
+    compileSdk = project.properties.compileSdk.toInteger()
+
+    dependencies {
+        implementation "androidx.annotation:annotation:1.9.1"
+        api project(":terminal-emulator")
+    }
+
+    defaultConfig {
+        minSdk = project.properties.minSdk.toInteger()
+        targetSdk = project.properties.targetSdk.toInteger()
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+}
+
+dependencies {
+    testImplementation "junit:junit:4.13.2"
+}
+
+tasks.register('sourceJar', Jar) {
+    from android.sourceSets.main.java.srcDirs
+    archiveClassifier = "sources"
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.compilerArgs << "-Xlint:deprecation"
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            // Creates a Maven publication called "release".
+            release(MavenPublication) {
+                from components.findByName('release')
+                groupId = 'com.termux'
+                artifactId = 'terminal-view'
+                version = '0.118.0'
+                artifact(sourceJar)
+            }
+        }
+    }
+}
+

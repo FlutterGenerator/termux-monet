@@ -1,0 +1,98 @@
+apply plugin: 'com.android.library'
+apply plugin: 'maven-publish'
+
+android {
+    namespace = "com.termux.shared"
+    compileSdk = project.properties.compileSdk.toInteger()
+
+    dependencies {
+        implementation "androidx.appcompat:appcompat:1.7.1"
+        implementation "androidx.annotation:annotation:1.9.1"
+
+        implementation "androidx.core:core:1.16.0"
+        implementation "com.google.android.material:material:1.12.0"
+        implementation "com.google.guava:guava:33.4.8-jre"
+        implementation "io.noties.markwon:core:$markwonVersion"
+        implementation "io.noties.markwon:ext-strikethrough:$markwonVersion"
+        implementation "io.noties.markwon:linkify:$markwonVersion"
+        implementation "io.noties.markwon:recycler:$markwonVersion"
+        //noinspection Aligned16KB
+        implementation "com.github.ChickenHook:RestrictionBypass:2.2"
+
+        implementation "androidx.window:window:1.4.0"
+
+        // Bumping commons-io to a version higher than 2.5
+        // will cause runtime exceptions on android < 8 due
+        // to missing classes like java.nio.file.Path.
+        implementation "commons-io:commons-io:2.19.0"
+
+        implementation project(":terminal-view")
+
+        implementation project(":termux-am-library")
+    }
+
+    defaultConfig {
+        compileSdk = project.properties.compileSdk.toInteger()
+        minSdk = project.properties.minSdk.toInteger()
+        targetSdk = project.properties.targetSdk.toInteger()
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        externalNativeBuild {
+            ndkBuild {
+                cppFlags ''
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        // Flag to enable support for the new language APIs
+        coreLibraryDesugaringEnabled = true
+
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+
+    externalNativeBuild {
+        ndkBuild {
+            path file('src/main/cpp/Android.mk')
+        }
+    }
+    ndkVersion System.getenv("JITPACK_NDK_VERSION") ?: project.properties.ndkVersion
+}
+
+dependencies {
+    testImplementation "junit:junit:4.13.2"
+    androidTestImplementation "androidx.test.ext:junit:1.2.1"
+    androidTestImplementation "androidx.test.espresso:espresso-core:3.6.1"
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.1.5'
+}
+
+tasks.register('sourceJar', Jar) {
+    from android.sourceSets.main.java.srcDirs
+    archiveClassifier = "sources"
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.compilerArgs << "-Xlint:deprecation"
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            // Creates a Maven publication called "release".
+            release(MavenPublication) {
+                from components.findByName('release')
+                groupId = 'com.termux'
+                artifactId = 'termux-shared'
+                version = '0.118.0'
+                artifact(sourceJar)
+            }
+        }
+    }
+}

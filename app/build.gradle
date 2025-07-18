@@ -1,0 +1,170 @@
+import java.util.regex.Pattern
+
+plugins {
+    id "com.android.application"
+}
+
+ext {
+    // The packageVariant defines the bootstrap variant that will be included in the app APK.
+    // This must be supported by com.termux.shared.termux.TermuxBootstrap.PackageVariant or app will
+    // crash at startup.
+    // Bootstrap of a different variant must not be manually installed by the user after app installation
+    // by replacing $PREFIX since app code is dependent on the variant used to build the APK.
+    // Currently supported values are: ["apt-android-7", "apt-android-5"]
+    packageVariant = System.getenv("TERMUX_PACKAGE_VARIANT") ?: "apt-android-7" // Default: "apt-android-7"
+}
+
+android {
+    namespace = "com.termux"
+    buildFeatures {
+        buildConfig = true
+    }
+    compileSdkVersion project.properties.compileSdk.toInteger()
+    def appVersionName = System.getenv("TERMUX_APP_VERSION_NAME") ?: ""
+    def apkVersionTag = System.getenv("TERMUX_APK_VERSION_TAG") ?: ""
+    def splitAPKsForDebugBuilds = System.getenv("TERMUX_SPLIT_APKS_FOR_DEBUG_BUILDS") ?: "1"
+    def splitAPKsForReleaseBuilds = System.getenv("TERMUX_SPLIT_APKS_FOR_RELEASE_BUILDS") ?: "1"
+
+    defaultConfig {
+        minSdk = project.properties.minSdk.toInteger()
+        targetSdk = project.properties.targetSdk.toInteger()
+        versionCode 1022 // Always keep the same versionCode as Termux Upstream to allow users to swap between termux installations.
+        versionName "0.119.0-b1+monet37"
+
+        if (appVersionName) versionName = appVersionName
+        validateVersionName(versionName)
+
+        buildConfigField "String", "TERMUX_PACKAGE_VARIANT", "\"" + project.ext.packageVariant + "\"" // Used by TermuxApplication class
+
+        manifestPlaceholders = [
+            TERMUX_PACKAGE_NAME    : "com.termux",
+            TERMUX_APP_NAME        : "Termux:Monet",
+            TERMUX_API_APP_NAME    : "Termux:API",
+            TERMUX_GUI_APP_NAME    : "Termux:GUI",
+            TERMUX_BOOT_APP_NAME   : "Termux:Boot",
+            TERMUX_FLOAT_APP_NAME  : "Termux:Float",
+            TERMUX_STYLING_APP_NAME: "Termux:Styling",
+            TERMUX_TASKER_APP_NAME : "Termux:Tasker",
+            TERMUX_WIDGET_APP_NAME : "Termux:Widget"
+        ]
+
+        splits {
+            abi {
+                enable = ((gradle.startParameter.taskNames.any { it.contains("Debug") } && splitAPKsForDebugBuilds == "1") ||
+                    (gradle.startParameter.taskNames.any { it.contains("Release") } && splitAPKsForReleaseBuilds == "1"))
+                reset()
+                include 'x86', 'x86_64', 'armeabi-v7a', 'arm64-v8a'
+                universalApk  = true
+            }
+        }
+    }
+
+    signingConfigs {
+        debug {
+            storeFile file('testkey_untrusted.jks')
+            keyAlias 'alias'
+            storePassword 'xrj45yWGLbsO7W0v'
+            keyPassword 'xrj45yWGLbsO7W0v'
+        }
+        release {
+            storeFile file('testkey_untrusted.jks')
+            storePassword 'xrj45yWGLbsO7W0v'
+            keyAlias 'alias'
+            keyPassword 'xrj45yWGLbsO7W0v'
+        }
+    }
+
+    buildTypes {
+        release {
+            debuggable false
+            minifyEnabled false
+            shrinkResources = false
+            jniDebuggable false
+            signingConfig = signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+            debuggable true
+            minifyEnabled false
+            shrinkResources = false
+            jniDebuggable false
+            signingConfig = signingConfigs.debug
+        }
+    }
+
+
+    compileOptions {
+        coreLibraryDesugaringEnabled = true
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+
+    lint {
+        disable 'ProtectedPermissions'
+        disable 'HardcodedDebugMode'
+    }
+
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
+
+    packagingOptions {
+        jniLibs {
+            useLegacyPackaging = false
+        }
+    }
+
+    applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            def abi = output.getFilter(com.android.build.OutputFile.ABI)
+            outputFileName = new File("termux-app_" + (apkVersionTag ? apkVersionTag : project.ext.packageVariant + "-" + variant.buildType.name) + "_" + (abi ? abi : "universal") + ".apk")
+        }
+    }
+}
+
+dependencies {
+    implementation 'androidx.annotation:annotation:1.9.1'
+    implementation 'androidx.core:core:1.16.0'
+    implementation "androidx.drawerlayout:drawerlayout:1.2.0"
+    implementation "androidx.preference:preference:1.2.1"
+    implementation 'androidx.viewpager:viewpager:1.1.0'
+    implementation "com.google.android.material:material:1.12.0"
+    implementation 'com.google.guava:guava:33.4.8-jre'
+    implementation "io.noties.markwon:core:$markwonVersion"
+    implementation "io.noties.markwon:ext-strikethrough:$markwonVersion"
+    implementation "io.noties.markwon:linkify:$markwonVersion"
+    implementation "io.noties.markwon:recycler:$markwonVersion"
+    implementation 'com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava'
+    implementation "com.github.misakmanukyan:RealtimeBlurView_v2:80d9939272"
+    implementation project(":terminal-view")
+    implementation project(":termux-shared")
+    implementation project(":native-entrypoint")
+    testImplementation "junit:junit:4.13.2"
+    testImplementation 'org.robolectric:robolectric:4.15.1'
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.1.5'
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.compilerArgs << "-Xlint:deprecation"
+}
+
+tasks.register('versionName') {
+    doLast {
+        print android.defaultConfig.versionName
+    }
+}
+
+static def validateVersionName(String versionName) {
+    // https://semver.org/spec/v2.0.0.html#is-there-a-suggested-regular-expression-regex-to-check-a-semver-string
+    if (!Pattern.matches("^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?\$", versionName)) {
+        throw new GradleException("The versionName '" + versionName + "' is not a valid version as per semantic version '2.0.0' spec in the format 'major.minor.patch(-prerelease)(+buildmetadata)'. https://semver.org/spec/v2.0.0.html.")
+    }
+}
+
+// https://stackoverflow.com/questions/75274720/a-failure-occurred-while-executing-appcheckdebugduplicateclasses/
+configurations.implementation {
+   exclude group: 'org.jetbrains.kotlin', module: 'kotlin-stdlib-jdk8'
+}
