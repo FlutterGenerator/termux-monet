@@ -5,6 +5,9 @@ on:
     types:
       - published
 
+permissions:
+  contents: write
+
 jobs:
   attach-apks:
     runs-on: ubuntu-latest
@@ -29,6 +32,9 @@ jobs:
 
       - name: Make gradlew executable
         run: chmod +x ./gradlew
+
+      - name: Install GitHub CLI
+        uses: cli/cli-action@v2
 
       - name: Build and attach APKs to release
         shell: bash {0}
