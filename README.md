@@ -71,7 +71,7 @@ Here's a quick tutorial on how to add it to the app.
 > The [Termux Monet](https://github.com/FlutterGenerator/termux-monet) fork app comes with the following optional modified plugin apps:
 >
 > **These are Modified Plugins. All these repos are Forks from termux-app**
-> - [Termux:Styling](https://github.com/Termux-Monet/termux-styling)
+> - [Termux:Styling](https://github.com/FlutterGenerator/termux-styling)
 > - [Termux:API](https://github.com/Termux-Monet/termux-api)
 > - [Termux:Boot](https://github.com/Termux-Monet/termux-boot)
 > - [Termux:Float](https://github.com/Termux-Monet/termux-float)
