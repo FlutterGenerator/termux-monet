@@ -5,6 +5,9 @@ on:
     types:
       - published
 
+permissions:
+  contents: write
+
 jobs:
   attach-apks:
     runs-on: ubuntu-latest
@@ -26,6 +29,9 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '17'
+
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
 
       - name: Build and attach APKs to release
         shell: bash {0}
