@@ -1,4 +1,4 @@
-name: Build nightly Debug
+name: Build nightly Release
 
 on:
   workflow_dispatch:
