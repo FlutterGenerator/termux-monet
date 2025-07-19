@@ -37,7 +37,7 @@
 
 ***
 
-## [FlutterGenerator](https://github.com/FlutterGenerator/termux-monet) is a discontinued (unmaintained) unofficial, modified fork of [Termux](https://github.com/termux/termux-app), an Android terminal application and Linux environment, with Monet Theming Implementations and Community-made changes.
+## [Termux-monet](https://github.com/FlutterGenerator/termux-monet) is a discontinued (unmaintained) unofficial, modified fork of [Termux](https://github.com/termux/termux-app), an Android terminal application and Linux environment, with Monet Theming Implementations and Community-made changes.
 This project has been developed on my spare time, for me to learn more about Android development. Dont expect consistency, professionality or stability. Feel free to fork and continue the project, if you want to do so. All the commits have been squashed, for ease of development of the next maintainer.
 **Good luck!**
 
