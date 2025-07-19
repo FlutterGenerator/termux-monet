@@ -14,13 +14,17 @@ jobs:
   testing:
     runs-on: ubuntu-latest
     steps:
-    - name: Clone repository
-      uses: actions/checkout@v4
-    - name: Setup java 17 as required by gradle
-      uses: actions/setup-java@v4
-      with:
-        distribution: 'temurin'
-        java-version: '17'
-    - name: Execute tests
-      run: |
-        ./gradlew test
+      - name: Clone repository
+        uses: actions/checkout@v4
+
+      - name: Setup Java 17 as required by Gradle
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
+
+      - name: Execute tests
+        run: ./gradlew test
