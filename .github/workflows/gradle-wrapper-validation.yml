@@ -1,4 +1,6 @@
 name: "Validate Gradle Wrapper"
+permissions:
+  contents: read
 
 on:
   workflow_dispatch
