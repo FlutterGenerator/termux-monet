@@ -3,11 +3,11 @@
   <img src="/art/logo_light.png#gh-light-mode-only">
 </p>
 <div align="center">
-  <a href="https://github.com/FlutterGenerator/termux-monet/actions/workflows/debug_build.yml?query=branch%3Amaster">
-    <img src="https://img.shields.io/github/actions/workflow/status/FlutterGenerator/termux-monet/debug_build.yml?branch=master&label=Build&logo=gradle"/>
+  <a href="https://github.com/FlutterGenerator/termux-monet/actions/workflows/debug_build.yml?query=branch%3Amain">
+    <img src="https://img.shields.io/github/actions/workflow/status/FlutterGenerator/termux-monet/debug_build.yml?branch=main&label=Build&logo=gradle"/>
   </a>
-  <a href="https://github.com/FlutterGenerator/termux-monet/actions/workflows/run_tests.yml?query=branch%3Amaster">
-    <img src="https://img.shields.io/github/actions/workflow/status/FlutterGenerator/termux-monet/run_tests.yml?branch=master&label=Test&logo=gradle"/>
+  <a href="https://github.com/FlutterGenerator/termux-monet/actions/workflows/run_tests.yml?query=branch%3Amain">
+    <img src="https://img.shields.io/github/actions/workflow/status/FlutterGenerator/termux-monet/run_tests.yml?branch=main&label=Test&logo=gradle"/>
   </a>
   <a href="https://hosted.weblate.org/engage/termux-monet/">
     <img src="https://hosted.weblate.org/widgets/termux-monet/-/svg-badge.svg" alt="Translation status" />
@@ -18,8 +18,8 @@
   <a href="https://www.android.com/versions/oreo-8-0/">
     <img src="https://img.shields.io/static/v1?label=Android&message=8%2B&color=brightgreen&style=flat&logo=android&logoColor=white"/>
   </a>
-  <a href="https://github.com/FlutterGenerator/termux-monet/commits/master">
-    <img src="https://img.shields.io/github/last-commit/FlutterGenerator/termux-monet/master?color=informational&label=Updated&logo=github"/>
+  <a href="https://github.com/FlutterGenerator/termux-monet/commits/main">
+    <img src="https://img.shields.io/github/last-commit/FlutterGenerator/termux-monet/main?color=informational&label=Updated&logo=github"/>
   </a>
   <a href="https://github.com/FlutterGenerator/termux-monet/releases">
     <img src="https://badgen.net/github/tag/FlutterGenerator/termux-monet?icon=terminal&color=orange&label=Latest"/>
@@ -49,7 +49,7 @@ This project has been developed on my spare time, for me to learn more about And
 
 # Termux-Monet can be updated by using [Obtainium](https://github.com/ImranR98/Obtainium)
 Here's a quick tutorial on how to add it to the app.
-<img src="https://raw.githubusercontent.com/FlutterGenerator/termux-monet/master/art/obtainium.png">
+<img src="https://raw.githubusercontent.com/FlutterGenerator/termux-monet/main/art/obtainium.png">
 ***
 
 ## Contents
@@ -114,7 +114,7 @@ su -c setprop persist.sys.fflag.override.settings_enable_monitor_phantom_procs f
 
 - On a Rooted phone with Magisk installed, flash the following module:
 
-    > [![](https://img.shields.io/static/v1?message=LetTheGhostsOut.zip&logo=magisk&labelColor=5c5c5c&color=00af9c&logoColor=white&label=%20&style=for-the-badge)](https://raw.githubusercontent.com/FlutterGenerator/termux-monet/master/ppr/PhantomProcessRetainer-main.zip)
+    > [![](https://img.shields.io/static/v1?message=LetTheGhostsOut.zip&logo=magisk&labelColor=5c5c5c&color=00af9c&logoColor=white&label=%20&style=for-the-badge)](https://raw.githubusercontent.com/FlutterGenerator/termux-monet/main/ppr/PhantomProcessRetainer-main.zip)
 
 - After that, `PhantomProcessKiller might be deactivated on every device boot.` Please make an [issue](https://github.com/FlutterGenerator/termux-monet/issues) on this repo if the module didn't work for you.
 
@@ -144,9 +144,9 @@ su -c getprop persist.sys.fflag.override.settings_enable_monitor_phantom_procs
 #### Nightly (Unstable)
  - The APKs for `GitHub Actions` will be listed under `Artifacts` section of a workflow run. These are created for each commit/push done to the repository and can be used by users who don't want to wait for releases and want to try out the latest features immediately. Note that for seeing action workflows, you **need** to be [**logged into a `GitHub` account**](https://github.com/login) for the `Artifacts` links to be enabled/clickable. If you are using the [`GitHub` app](https://github.com/mobile), then make sure to open workflow link in a browser like Chrome or Firefox that has your GitHub account logged in since the in-app browser may not be logged in. 
 
-**Security warning**: APK files on GitHub are signed with a test key that has been [shared with community](https://github.com/termux/termux-app/blob/master/app/testkey_untrusted.jks). This IS NOT an official developer key and everyone can use it to generate releases for own testing. Be very careful when using Termux GitHub builds obtained elsewhere except https://github.com/termux/termux-app. Everyone is able to use it to forge a malicious Termux update installable over the GitHub build. Think twice about installing Termux builds distributed via Telegram or other social media. If your device get caught by malware, we will not be able to help you.
+**Security warning**: APK files on GitHub are signed with a test key that has been [shared with community](https://github.com/termux/termux-app/blob/main/app/testkey_untrusted.jks). This IS NOT an official developer key and everyone can use it to generate releases for own testing. Be very careful when using Termux GitHub builds obtained elsewhere except https://github.com/termux/termux-app. Everyone is able to use it to forge a malicious Termux update installable over the GitHub build. Think twice about installing Termux builds distributed via Telegram or other social media. If your device get caught by malware, we will not be able to help you.
 
-The [test key](https://github.com/termux/termux-app/blob/master/app/testkey_untrusted.jks) shall not be used to impersonate @termux and can't be used for this anyway. This key is not trusted by us and it is quite easy to detect its use in user generated content.
+The [test key](https://github.com/termux/termux-app/blob/main/app/testkey_untrusted.jks) shall not be used to impersonate @termux and can't be used for this anyway. This key is not trusted by us and it is quite easy to detect its use in user generated content.
 
 Keystore information:
 ```
@@ -279,7 +279,7 @@ Users must post complete report (optionally without sensitive info) when reporti
 
 ## Forking
 
-- Check [`TermuxConstants`](https://github.com/FlutterGenerator/termux-monet/blob/master/termux-shared/src/main/java/com/termux/shared/termux/TermuxConstants.java) javadocs for instructions on what changes to make in the app to change package name.
+- Check [`TermuxConstants`](https://github.com/FlutterGenerator/termux-monet/blob/main/termux-shared/src/main/java/com/termux/shared/termux/TermuxConstants.java) javadocs for instructions on what changes to make in the app to change package name.
 - Keep targetSdk 28 to avoid login error `not exec("/data/data/com.termux/files/usr/bin/login"): Permission denied`.
 - You also need to recompile bootstrap zip for the new package name. Check [building bootstrap](https://github.com/termux/termux-packages/wiki/For-maintainers#build-bootstrap-archives), [here](https://github.com/termux/termux-app/issues/1983) and [here](https://github.com/termux/termux-app/issues/2081#issuecomment-865280111).
 - Currently, not all plugins use `TermuxConstants` from `termux-shared` library and have hardcoded `com.termux` values and will need to be manually patched.
@@ -295,8 +295,8 @@ Users must post complete report (optionally without sensitive info) when reporti
 ***
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/FlutterGenerator/termux-monet/master/art/ic_monet_dark.svg#gh-dark-mode-only" width=50% height=50%>
-<img src="https://raw.githubusercontent.com/FlutterGenerator/termux-monet/master/art/ic_monet_light.svg#gh-light-mode-only" width=50% height=50%>
+<img src="https://raw.githubusercontent.com/FlutterGenerator/termux-monet/main/art/ic_monet_dark.svg#gh-dark-mode-only" width=50% height=50%>
+<img src="https://raw.githubusercontent.com/FlutterGenerator/termux-monet/main/art/ic_monet_light.svg#gh-light-mode-only" width=50% height=50%>
 </p>
 
 <div align="center">
