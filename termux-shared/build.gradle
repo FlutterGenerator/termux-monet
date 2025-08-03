@@ -47,6 +47,13 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            jniDebuggable false
+            debuggable false
+        }
+        debug {
+            minifyEnabled false
+            jniDebuggable false
+            debuggable true
         }
     }
 
@@ -63,7 +70,7 @@ android {
             path file('src/main/cpp/Android.mk')
         }
     }
-    ndkVersion System.getenv("JITPACK_NDK_VERSION") ?: project.properties.ndkVersion
+    ndkVersion = System.getenv("JITPACK_NDK_VERSION") ?: project.properties.ndkVersion
 }
 
 dependencies {
