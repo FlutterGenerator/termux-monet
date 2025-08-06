@@ -19,10 +19,11 @@ allprojects {
     configurations.all {
         resolutionStrategy.eachDependency { details ->
 
-            // ✅ Netty: handler + codec-http (фикс CVE, ставим >= 4.1.118.Final)
+            // ✅ Netty: handler + codec-http + common (фикс CVE, ставим >= 4.1.118.Final)
             if (details.requested.group == "io.netty" &&
                 (details.requested.name == "netty-handler" ||
-                 details.requested.name == "netty-codec-http")) {
+                 details.requested.name == "netty-codec-http" ||
+                 details.requested.name == "netty-common")) {
                 details.useVersion "4.1.118.Final"
             }
 
