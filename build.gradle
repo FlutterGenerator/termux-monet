@@ -15,6 +15,15 @@ allprojects {
         maven { url = "https://jitpack.io" }
     }
 
+    // 🔹 Фикс уязвимого netty-handler
+    configurations.all {
+        resolutionStrategy.eachDependency { details ->
+            if (details.requested.group == "io.netty" && details.requested.name == "netty-handler") {
+                details.useVersion "4.1.118.Final"
+            }
+        }
+    }
+
     tasks.withType(JavaCompile).configureEach {
         options.compilerArgs << "-Xlint:deprecation"
     }
