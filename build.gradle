@@ -15,16 +15,18 @@ allprojects {
         maven { url = "https://jitpack.io" }
     }
 
-    // 🔹 Фикс уязвимых библиотек
+    // 🔹 Принудительное обновление уязвимых зависимостей
     configurations.all {
         resolutionStrategy.eachDependency { details ->
-            // Netty: handler + codec-http (ставим одну версию, >= 4.1.118.Final)
+
+            // ✅ Netty: handler + codec-http (фикс CVE, ставим >= 4.1.118.Final)
             if (details.requested.group == "io.netty" &&
-                (details.requested.name == "netty-handler" || details.requested.name == "netty-codec-http")) {
+                (details.requested.name == "netty-handler" ||
+                 details.requested.name == "netty-codec-http")) {
                 details.useVersion "4.1.118.Final"
             }
 
-            // Apache Commons Compress (>= 1.26.0)
+            // ✅ Apache Commons Compress (фикс CVE, ставим >= 1.26.0)
             if (details.requested.group == "org.apache.commons" &&
                 details.requested.name == "commons-compress") {
                 details.useVersion "1.26.0"
@@ -32,10 +34,12 @@ allprojects {
         }
     }
 
+    // ⚙️ Дополнительные настройки компилятора
     tasks.withType(JavaCompile).configureEach {
         options.compilerArgs << "-Xlint:deprecation"
     }
 
+    // 🧹 Очистка build-папок
     tasks.withType(Delete).configureEach {
         delete layout.buildDirectory
     }
