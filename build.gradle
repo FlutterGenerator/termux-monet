@@ -23,6 +23,7 @@ allprojects {
             if (details.requested.group == "io.netty" &&
                 (details.requested.name == "netty-handler" ||
                  details.requested.name == "netty-codec-http" ||
+                 details.requested.name == "netty-codec-http2" ||
                  details.requested.name == "netty-common")) {
                 details.useVersion "4.1.118.Final"
             }
