@@ -15,11 +15,19 @@ allprojects {
         maven { url = "https://jitpack.io" }
     }
 
-    // 🔹 Фикс уязвимого netty-handler
+    // 🔹 Фикс уязвимых библиотек
     configurations.all {
         resolutionStrategy.eachDependency { details ->
-            if (details.requested.group == "io.netty" && details.requested.name == "netty-handler") {
+            // Netty: handler + codec-http (ставим одну версию, >= 4.1.118.Final)
+            if (details.requested.group == "io.netty" &&
+                (details.requested.name == "netty-handler" || details.requested.name == "netty-codec-http")) {
                 details.useVersion "4.1.118.Final"
+            }
+
+            // Apache Commons Compress (>= 1.26.0)
+            if (details.requested.group == "org.apache.commons" &&
+                details.requested.name == "commons-compress") {
+                details.useVersion "1.26.0"
             }
         }
     }
