@@ -19,7 +19,7 @@ allprojects {
     configurations.all {
         resolutionStrategy.eachDependency { details ->
 
-            // ✅ Netty: handler + codec-http + common (фикс CVE, ставим >= 4.1.118.Final)
+            // ✅ Netty: handler + codec-http + common (фикс CVE, >= 4.1.118.Final)
             if (details.requested.group == "io.netty" &&
                 (details.requested.name == "netty-handler" ||
                  details.requested.name == "netty-codec-http" ||
@@ -27,10 +27,19 @@ allprojects {
                 details.useVersion "4.1.118.Final"
             }
 
-            // ✅ Apache Commons Compress (фикс CVE, ставим >= 1.26.0)
+            // ✅ Apache Commons Compress (фикс CVE, >= 1.26.0)
             if (details.requested.group == "org.apache.commons" &&
                 details.requested.name == "commons-compress") {
                 details.useVersion "1.26.0"
+            }
+
+            // ✅ Google Protobuf (фикс CVE-2024-7254, >= 3.25.5)
+            if (details.requested.group == "com.google.protobuf" &&
+                (details.requested.name == "protobuf-kotlin" ||
+                 details.requested.name == "protobuf-java" ||
+                 details.requested.name == "protobuf-javalite" ||
+                 details.requested.name == "protobuf-kotlin-lite")) {
+                details.useVersion "3.25.5"
             }
         }
     }
