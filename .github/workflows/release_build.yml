@@ -23,7 +23,7 @@ jobs:
 
     steps:
       - name: Clone repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup java 17 as required by gradle
         uses: actions/setup-java@v4
