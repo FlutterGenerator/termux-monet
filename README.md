@@ -304,7 +304,7 @@ Users must post complete report (optionally without sensitive info) when reporti
     <img src="https://img.shields.io/github/downloads/FlutterGenerator/termux-monet/total?color=brightgreen&label=Downloads"/>
   </a>
   <a href="https://github.com/FlutterGenerator/termux-monet/releases">
-    <img src="https://badgen.net/github/assets-dl/FlutterGenerator/termux-monet?label=Updates"/>
+    <img src="https://img.shields.io/github/last-commit/FlutterGenerator/termux-monet?label=Updates"/>
   </a>
   <a href="https://github.com/FlutterGenerator/termux-monet/forks?activity_threshold=5y&include=active%2Carchived%2Cinactive&page=1&sort_by=last_updated">
     <img src="https://img.shields.io/github/forks/FlutterGenerator/termux-monet?style=social"/>
