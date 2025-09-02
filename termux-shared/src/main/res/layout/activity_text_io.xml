@@ -55,8 +55,7 @@
                     android:id="@+id/text_io_horizontal_scroll_view"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:fillViewport="true"
-                    tools:ignore="UselessParent">
+                    android:fillViewport="true">
 
                     <LinearLayout
                         android:id="@+id/text_io_text_linear_layout"

@@ -34,16 +34,16 @@
                 android:id="@+id/terminal_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="3dp"
-                android:layout_marginRight="3dp"
                 android:defaultFocusHighlightEnabled="false"
-                android:fastScrollEnabled="false"
                 android:focusableInTouchMode="true"
+                android:layout_marginRight="3dp"
+                android:layout_marginLeft="3dp"
                 android:overScrollMode="never"
+                android:smoothScrollbar="false"
+                android:scrollingCache="true"
+                android:fastScrollEnabled="false"
                 android:scrollbarThumbVertical="@drawable/terminal_scroll_shape"
                 android:scrollbars="vertical"
-                android:scrollingCache="true"
-                android:smoothScrollbar="false"
                 tools:ignore="UnusedAttribute" />
 
             <RelativeLayout
@@ -150,11 +150,11 @@
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/terminal_toolbar_view_pager"
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="37.5dp"
             android:layout_alignParentBottom="true"
-            android:background="@android:color/transparent"
-            android:visibility="gone" />
+            android:background="@android:color/transparent"/>
     </RelativeLayout>
 
     <View

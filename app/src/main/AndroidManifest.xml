@@ -62,7 +62,8 @@
             android:configChanges="orientation|screenSize|smallestScreenSize|density|screenLayout|keyboard|keyboardHidden|navigation"
             android:launchMode="singleTask"
             android:resizeableActivity="true"
-            android:theme="@style/Theme.TermuxActivity.DayNight.NoActionBar">
+            android:theme="@style/Theme.TermuxActivity.DayNight.NoActionBar"
+            tools:targetApi="26">
         <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -97,7 +98,8 @@
             android:name=".app.activities.HelpActivity"
             android:exported="false"
             android:parentActivityName=".app.TermuxActivity"
-            android:resizeableActivity="true"/>
+            android:resizeableActivity="true"
+            tools:targetApi="26" />
 
         <activity
             android:name=".app.activities.SettingsActivity"
@@ -116,7 +118,8 @@
             android:exported="false"
             android:noHistory="true"
             android:resizeableActivity="true"
-            android:taskAffinity="${TERMUX_PACKAGE_NAME}.filereceiver">
+            android:taskAffinity="${TERMUX_PACKAGE_NAME}.filereceiver"
+            tools:targetApi="26">
         </activity>
 
         <activity-alias
@@ -188,6 +191,7 @@
             android:grantUriPermissions="true"
             android:permission="${TERMUX_PACKAGE_NAME}.permission.RUN_COMMAND" />
 
+
         <receiver
             android:name=".app.TermuxOpenReceiver"
             android:exported="false" />
@@ -204,6 +208,7 @@
             android:name=".shared.activities.ReportActivity$ReportActivityBroadcastReceiver"
             android:exported="false" />
 
+
         <service
             android:name=".app.TermuxService"
             android:foregroundServiceType="specialUse"
@@ -219,11 +224,13 @@
             </intent-filter>
         </service>
 
+
         <!-- This (or rather, value 2.1 or higher) is needed to make the Samsung Galaxy S8 mark the
         app with "This app is optimized to run in full screen." -->
         <meta-data
             android:name="android.max_aspect"
             android:value="10.0" />
+
 
         <!-- https://developer.samsung.com/samsung-dex/modify-optimizing.html -->
 

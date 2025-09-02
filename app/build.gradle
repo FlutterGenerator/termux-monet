@@ -19,15 +19,15 @@ android {
     buildFeatures {
         buildConfig = true
     }
-    compileSdk = project.properties.compileSdk.toInteger()
+    compileSdkVersion project.properties.compileSdk.toInteger()
     def appVersionName = System.getenv("TERMUX_APP_VERSION_NAME") ?: ""
     def apkVersionTag = System.getenv("TERMUX_APK_VERSION_TAG") ?: ""
     def splitAPKsForDebugBuilds = System.getenv("TERMUX_SPLIT_APKS_FOR_DEBUG_BUILDS") ?: "1"
     def splitAPKsForReleaseBuilds = System.getenv("TERMUX_SPLIT_APKS_FOR_RELEASE_BUILDS") ?: "1"
 
     defaultConfig {
-        minSdkVersion project.properties.minSdkVersion.toInteger()
-        targetSdkVersion project.properties.targetSdkVersion.toInteger()
+        minSdk = project.properties.minSdk.toInteger()
+        targetSdk = project.properties.targetSdk.toInteger()
         versionCode 1022 // Always keep the same versionCode as Termux Upstream to allow users to swap between termux installations.
         versionName "0.119.0-b1+monet37"
 
@@ -94,8 +94,8 @@ android {
 
     compileOptions {
         coreLibraryDesugaringEnabled = true
-        sourceCompatibility JavaVersion.VERSION_17
-        targetCompatibility JavaVersion.VERSION_17
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
 
     lint {
@@ -117,7 +117,7 @@ android {
 
     applicationVariants.all { variant ->
         variant.outputs.all { output ->
-            def abi = output.getFilter com.android.build.OutputFile.ABI
+            def abi = output.getFilter(com.android.build.OutputFile.ABI)
             outputFileName = new File("termux-app_" + (apkVersionTag ? apkVersionTag : project.ext.packageVariant + "-" + variant.buildType.name) + "_" + (abi ? abi : "universal") + ".apk")
         }
     }
@@ -125,7 +125,7 @@ android {
 
 dependencies {
     implementation 'androidx.annotation:annotation:1.9.1'
-    implementation 'androidx.core:core:1.17.0'
+    implementation 'androidx.core:core:1.16.0'
     implementation "androidx.drawerlayout:drawerlayout:1.2.0"
     implementation "androidx.preference:preference:1.2.1"
     implementation 'androidx.viewpager:viewpager:1.1.0'
@@ -141,7 +141,7 @@ dependencies {
     implementation project(":termux-shared")
     implementation project(":native-entrypoint")
     testImplementation "junit:junit:4.13.2"
-    testImplementation 'org.robolectric:robolectric:4.16'
+    testImplementation 'org.robolectric:robolectric:4.15.1'
     coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.1.5'
 }
 

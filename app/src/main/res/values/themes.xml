@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!--
      https://material.io/develop/android/theming/dark
     -->
@@ -30,8 +30,8 @@
         <item name="android:windowActionModeOverlay">true</item>
 
         <!-- Transparent Status Bar and NavigationBar -->
-        <item name="android:enforceNavigationBarContrast" tools:ignore="NewApi">false</item>
-        <item name="android:enforceStatusBarContrast" tools:ignore="NewApi">false</item>
+        <item name="android:enforceNavigationBarContrast">false</item>
+        <item name="android:enforceStatusBarContrast">false</item>
         <item name="android:navigationBarColor">@color/background_accent</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:windowTranslucentStatus">true</item>
