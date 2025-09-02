@@ -3,11 +3,11 @@
   <img src="/art/logo_light.png#gh-light-mode-only">
 </p>
 <div align="center">
-  <a href="https://github.com/FlutterGenerator/termux-monet/actions/workflows/debug_build.yml?query=branch%3Amaster">
-    <img src="https://img.shields.io/github/actions/workflow/status/FlutterGenerator/termux-monet/debug_build.yml?branch=master&label=Build&logo=gradle"/>
+  <a href="https://github.com/FlutterGenerator/termux-monet/actions/workflows/debug_build.yml?query=branch%3Amain">
+    <img src="https://img.shields.io/github/actions/workflow/status/FlutterGenerator/termux-monet/debug_build.yml?branch=main&label=Build&logo=gradle"/>
   </a>
-  <a href="https://github.com/FlutterGenerator/termux-monet/actions/workflows/run_tests.yml?query=branch%3Amaster">
-    <img src="https://img.shields.io/github/actions/workflow/status/FlutterGenerator/termux-monet/run_tests.yml?branch=master&label=Test&logo=gradle"/>
+  <a href="https://github.com/FlutterGenerator/termux-monet/actions/workflows/run_tests.yml?query=branch%3Amain">
+    <img src="https://img.shields.io/github/actions/workflow/status/FlutterGenerator/termux-monet/run_tests.yml?branch=main&label=Test&logo=gradle"/>
   </a>
   <a href="https://jitpack.io/#FlutterGenerator/termux-monet">
     <img src="https://jitpack.io/v/FlutterGenerator/termux-monet.svg" alt="JitPack"/>
