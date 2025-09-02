@@ -9,8 +9,8 @@
   <a href="https://github.com/FlutterGenerator/termux-monet/actions/workflows/run_tests.yml?query=branch%3Amain">
     <img src="https://img.shields.io/github/actions/workflow/status/FlutterGenerator/termux-monet/run_tests.yml?branch=main&label=Test&logo=gradle"/>
   </a>
-  <a href="https://hosted.weblate.org/engage/termux-monet/">
-    <img src="https://hosted.weblate.org/widgets/termux-monet/-/svg-badge.svg" alt="Translation status" />
+  <a href="https://jitpack.io/#FlutterGenerator/termux-monet">
+    <img src="https://jitpack.io/v/FlutterGenerator/termux-monet.svg" alt="JitPack"/>
   </a>
 </div>
 <br />
