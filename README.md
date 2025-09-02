@@ -19,7 +19,7 @@
     <img src="https://img.shields.io/static/v1?label=Android&message=8%2B&color=brightgreen&style=flat&logo=android&logoColor=white"/>
   </a>
   <a href="https://github.com/FlutterGenerator/termux-monet/commits/master">
-    <img src="https://img.shields.io/github/last-commit/FlutterGenerator/termux-monet/master?color=informational&label=Updated&logo=github"/>
+    <img src="https://img.shields.io/github/last-commit/FlutterGenerator/termux-monet/main?color=informational&label=Updated&logo=github"/>
   </a>
   <a href="https://github.com/FlutterGenerator/termux-monet/releases">
     <img src="https://badgen.net/github/tag/FlutterGenerator/termux-monet?icon=terminal&color=orange&label=Latest"/>
