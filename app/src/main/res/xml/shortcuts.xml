@@ -1,5 +1,4 @@
-<shortcuts xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!--
         For shortcut.xml:
@@ -14,8 +13,7 @@
         android:shortcutId="new_session"
         android:enabled="true"
         android:icon="@drawable/ic_new_session"
-        android:shortcutShortLabel="@string/action_new_session"
-        tools:targetApi="n_mr1">
+        android:shortcutShortLabel="@string/action_new_session">
         <intent
             android:action="android.intent.action.RUN"
             android:targetPackage="com.termux"
@@ -27,8 +25,7 @@
         android:shortcutId="new_failsafe_session"
         android:enabled="true"
         android:icon="@drawable/ic_new_failsafe"
-        android:shortcutShortLabel="@string/action_new_session_failsafe"
-        tools:targetApi="n_mr1">
+        android:shortcutShortLabel="@string/action_new_session_failsafe">
         <intent
             android:action="android.intent.action.RUN"
             android:targetPackage="com.termux"
@@ -42,8 +39,7 @@
         android:shortcutId="settings"
         android:enabled="true"
         android:icon="@drawable/ic_settings_shortcut"
-        android:shortcutShortLabel="@string/action_open_settings"
-        tools:targetApi="n_mr1">
+        android:shortcutShortLabel="@string/action_open_settings">
         <intent
             android:action="android.intent.action.VIEW"
             android:targetPackage="com.termux"

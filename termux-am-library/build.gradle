@@ -5,11 +5,12 @@ plugins {
 
 android {
     namespace = "com.termux.am"
+
     compileSdk = project.properties.compileSdk.toInteger()
 
     defaultConfig {
-        minSdk = project.properties.minSdk.toInteger()
-        targetSdk = project.properties.targetSdk.toInteger()
+        minSdkVersion project.properties.minSdkVersion.toInteger()
+        targetSdkVersion project.properties.targetSdkVersion.toInteger()
         versionCode 1
         versionName "2.0.0"
 
@@ -31,8 +32,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 }
 

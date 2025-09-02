@@ -3,6 +3,7 @@ apply plugin: 'maven-publish'
 
 android {
     namespace = "com.termux.view"
+
     compileSdk = project.properties.compileSdk.toInteger()
 
     dependencies {
@@ -11,8 +12,8 @@ android {
     }
 
     defaultConfig {
-        minSdk = project.properties.minSdk.toInteger()
-        targetSdk = project.properties.targetSdk.toInteger()
+        minSdkVersion project.properties.minSdkVersion.toInteger()
+        targetSdkVersion project.properties.targetSdkVersion.toInteger()
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
@@ -31,8 +32,8 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 }
 

@@ -1,11 +1,15 @@
 buildscript {
     repositories {
-        mavenCentral()
         google()
+        mavenCentral()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:8.12.2'
     }
+}
+
+ext {
+    markwonVersion= '4.6.2'
 }
 
 allprojects {
@@ -16,7 +20,7 @@ allprojects {
     }
 
     // 🔹 Принудительное обновление уязвимых зависимостей
-    configurations.all {
+    configurations.configureEach {
         resolutionStrategy.eachDependency { details ->
 
             // ✅ Netty (фикс CVE, >= 4.1.118.Final)

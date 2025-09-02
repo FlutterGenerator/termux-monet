@@ -19,15 +19,15 @@ android {
     buildFeatures {
         buildConfig = true
     }
-    compileSdkVersion project.properties.compileSdk.toInteger()
+    compileSdk = project.properties.compileSdk.toInteger()
     def appVersionName = System.getenv("TERMUX_APP_VERSION_NAME") ?: ""
     def apkVersionTag = System.getenv("TERMUX_APK_VERSION_TAG") ?: ""
     def splitAPKsForDebugBuilds = System.getenv("TERMUX_SPLIT_APKS_FOR_DEBUG_BUILDS") ?: "1"
     def splitAPKsForReleaseBuilds = System.getenv("TERMUX_SPLIT_APKS_FOR_RELEASE_BUILDS") ?: "1"
 
     defaultConfig {
-        minSdk = project.properties.minSdk.toInteger()
-        targetSdk = project.properties.targetSdk.toInteger()
+        minSdkVersion project.properties.minSdkVersion.toInteger()
+        targetSdkVersion project.properties.targetSdkVersion.toInteger()
         versionCode 1022 // Always keep the same versionCode as Termux Upstream to allow users to swap between termux installations.
         versionName "0.119.0-b1+monet37"
 
@@ -94,8 +94,8 @@ android {
 
     compileOptions {
         coreLibraryDesugaringEnabled = true
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 
     lint {
@@ -117,7 +117,7 @@ android {
 
     applicationVariants.all { variant ->
         variant.outputs.all { output ->
-            def abi = output.getFilter(com.android.build.OutputFile.ABI)
+            def abi = output.getFilter com.android.build.OutputFile.ABI
             outputFileName = new File("termux-app_" + (apkVersionTag ? apkVersionTag : project.ext.packageVariant + "-" + variant.buildType.name) + "_" + (abi ? abi : "universal") + ".apk")
         }
     }
