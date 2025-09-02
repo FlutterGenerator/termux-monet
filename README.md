@@ -18,7 +18,7 @@
   <a href="https://www.android.com/versions/oreo-8-0/">
     <img src="https://img.shields.io/static/v1?label=Android&message=8%2B&color=brightgreen&style=flat&logo=android&logoColor=white"/>
   </a>
-  <a href="https://github.com/FlutterGenerator/termux-monet/commits/master">
+  <a href="https://github.com/FlutterGenerator/termux-monet/commits/main">
     <img src="https://img.shields.io/github/last-commit/FlutterGenerator/termux-monet/main?color=informational&label=Updated&logo=github"/>
   </a>
   <a href="https://github.com/FlutterGenerator/termux-monet/releases">
