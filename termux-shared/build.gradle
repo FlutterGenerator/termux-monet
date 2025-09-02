@@ -9,7 +9,7 @@ android {
         implementation "androidx.appcompat:appcompat:1.7.1"
         implementation "androidx.annotation:annotation:1.9.1"
 
-        implementation "androidx.core:core:1.16.0"
+        implementation "androidx.core:core:1.17.0"
         implementation "com.google.android.material:material:1.12.0"
         implementation "com.google.guava:guava:33.4.8-jre"
         implementation "io.noties.markwon:core:$markwonVersion"
@@ -33,8 +33,8 @@ android {
 
     defaultConfig {
         compileSdk = project.properties.compileSdk.toInteger()
-        minSdk = project.properties.minSdk.toInteger()
-        targetSdk = project.properties.targetSdk.toInteger()
+        minSdkVersion project.properties.minSdkVersion.toInteger()
+        targetSdkVersion project.properties.targetSdkVersion.toInteger()
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         externalNativeBuild {
             ndkBuild {
@@ -48,12 +48,10 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             jniDebuggable false
-            debuggable false
         }
         debug {
             minifyEnabled false
             jniDebuggable false
-            debuggable true
         }
     }
 
@@ -61,8 +59,8 @@ android {
         // Flag to enable support for the new language APIs
         coreLibraryDesugaringEnabled = true
 
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 
     externalNativeBuild {
@@ -71,6 +69,9 @@ android {
         }
     }
     ndkVersion = System.getenv("JITPACK_NDK_VERSION") ?: project.properties.ndkVersion
+    buildFeatures {
+        viewBinding = false
+    }
 }
 
 dependencies {

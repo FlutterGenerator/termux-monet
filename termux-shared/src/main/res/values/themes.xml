@@ -21,8 +21,8 @@
         <item name="colorOnSecondary">@color/black</item>
 
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
-        <item name="colorPrimaryDark" tools:targetApi="l">?attr/colorPrimary</item>
+        <item name="android:statusBarColor" tools:targetApi="l" tools:ignore="ObsoleteSdkInt">?attr/colorPrimaryVariant</item>
+        <item name="colorPrimaryDark" tools:targetApi="l" tools:ignore="ObsoleteSdkInt">?attr/colorPrimary</item>
 
         <!-- Text color. -->
         <item name="android:textColorPrimary">@color/black</item>
@@ -83,8 +83,8 @@
         <item name="colorOnSecondary">@color/black</item>
 
         <!-- Surface color. -->
-        <item name="colorSurface">@color/design_dark_default_color_surface</item>
-        <item name="colorOnSurface">@color/design_dark_default_color_on_surface</item>
+        <item name="colorSurface" tools:ignore="PrivateResource">@color/design_dark_default_color_surface</item>
+        <item name="colorOnSurface" tools:ignore="PrivateResource">@color/design_dark_default_color_on_surface</item>
 
         <!-- Dialog title panel style. -->
         <item name="materialAlertDialogTitlePanelStyle">@style/BaseDialog.Title.Panel</item>

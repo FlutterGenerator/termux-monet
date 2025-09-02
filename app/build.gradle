@@ -18,6 +18,7 @@ android {
     namespace = "com.termux"
     buildFeatures {
         buildConfig = true
+        viewBinding = false
     }
     compileSdkVersion project.properties.compileSdk.toInteger()
     def appVersionName = System.getenv("TERMUX_APP_VERSION_NAME") ?: ""
@@ -26,8 +27,8 @@ android {
     def splitAPKsForReleaseBuilds = System.getenv("TERMUX_SPLIT_APKS_FOR_RELEASE_BUILDS") ?: "1"
 
     defaultConfig {
-        minSdk = project.properties.minSdk.toInteger()
-        targetSdk = project.properties.targetSdk.toInteger()
+        minSdkVersion project.properties.minSdkVersion.toInteger()
+        targetSdkVersion project.properties.targetSdkVersion.toInteger()
         versionCode 1022 // Always keep the same versionCode as Termux Upstream to allow users to swap between termux installations.
         versionName "0.119.0-b1+monet37"
 
@@ -94,8 +95,8 @@ android {
 
     compileOptions {
         coreLibraryDesugaringEnabled = true
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 
     lint {
@@ -114,6 +115,11 @@ android {
             useLegacyPackaging = false
         }
     }
+    dependenciesInfo {
+        includeInApk = false
+        includeInBundle = false
+    }
+    buildToolsVersion '36.0.0'
 
     applicationVariants.all { variant ->
         variant.outputs.all { output ->
@@ -125,7 +131,7 @@ android {
 
 dependencies {
     implementation 'androidx.annotation:annotation:1.9.1'
-    implementation 'androidx.core:core:1.16.0'
+    implementation 'androidx.core:core:1.17.0'
     implementation "androidx.drawerlayout:drawerlayout:1.2.0"
     implementation "androidx.preference:preference:1.2.1"
     implementation 'androidx.viewpager:viewpager:1.1.0'
@@ -136,12 +142,12 @@ dependencies {
     implementation "io.noties.markwon:linkify:$markwonVersion"
     implementation "io.noties.markwon:recycler:$markwonVersion"
     implementation 'com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava'
-    implementation "com.github.misakmanukyan:RealtimeBlurView_v2:80d9939272"
+    implementation 'com.github.mmin18:realtimeblurview:f54dc3c34d'
     implementation project(":terminal-view")
     implementation project(":termux-shared")
     implementation project(":native-entrypoint")
     testImplementation "junit:junit:4.13.2"
-    testImplementation 'org.robolectric:robolectric:4.15.1'
+    testImplementation 'org.robolectric:robolectric:4.16'
     coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.1.5'
 }
 

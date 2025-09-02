@@ -1,12 +1,12 @@
 <resources>
-  <string name="paste_text">Paste</string>
-  <string name="copy_text">Copy</string>
-  <string name="text_selection_more">More…</string>
-  <string name="copied_to_clipboard_text">Screen copied to clipboard</string>
-  <string name="a11y_termux_menu_text">More…</string>
-  <string name="a11y_copy_screen_text">Copy Screen</string>
-  <string name="a11y_speak_cursor_position_text">Speak Cursor Position</string>
-  <string name="a11y_speak_cursor_line_text">Speak Cursor Line</string>
-  <string name="a11y_line_text">Line</string>
-  <string name="a11y_column_text">Column</string>
+  <string name="paste_text" translatable="false">Paste</string>
+  <string name="copy_text" translatable="false">Copy</string>
+  <string name="text_selection_more" translatable="false">More…</string>
+  <string name="copied_to_clipboard_text" translatable="false">Screen copied to clipboard</string>
+  <string name="a11y_termux_menu_text" translatable="false">More…</string>
+  <string name="a11y_copy_screen_text" translatable="false">Copy Screen</string>
+  <string name="a11y_speak_cursor_position_text" translatable="false">Speak Cursor Position</string>
+  <string name="a11y_speak_cursor_line_text" translatable="false">Speak Cursor Line</string>
+  <string name="a11y_line_text" translatable="false">Line</string>
+  <string name="a11y_column_text" translatable="false">Column</string>
 </resources>

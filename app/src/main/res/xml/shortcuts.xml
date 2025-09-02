@@ -15,7 +15,8 @@
         android:enabled="true"
         android:icon="@drawable/ic_new_session"
         android:shortcutShortLabel="@string/action_new_session"
-        tools:targetApi="n_mr1">
+        tools:targetApi="n_mr1"
+        tools:ignore="ObsoleteSdkInt">
         <intent
             android:action="android.intent.action.RUN"
             android:targetPackage="com.termux"
@@ -28,7 +29,8 @@
         android:enabled="true"
         android:icon="@drawable/ic_new_failsafe"
         android:shortcutShortLabel="@string/action_new_session_failsafe"
-        tools:targetApi="n_mr1">
+        tools:targetApi="n_mr1"
+        tools:ignore="ObsoleteSdkInt">
         <intent
             android:action="android.intent.action.RUN"
             android:targetPackage="com.termux"
@@ -43,7 +45,8 @@
         android:enabled="true"
         android:icon="@drawable/ic_settings_shortcut"
         android:shortcutShortLabel="@string/action_open_settings"
-        tools:targetApi="n_mr1">
+        tools:targetApi="n_mr1"
+        tools:ignore="ObsoleteSdkInt">
         <intent
             android:action="android.intent.action.VIEW"
             android:targetPackage="com.termux"
