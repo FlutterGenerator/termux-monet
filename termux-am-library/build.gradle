@@ -4,8 +4,8 @@ plugins {
 }
 
 android {
-    namespace = "com.termux.am"
-    compileSdk = project.properties.compileSdk.toInteger()
+    namespace = 'com.termux.am'
+    compileSdkVersion project.properties.compileSdkVersion.toInteger()
 
     defaultConfig {
         minSdkVersion project.properties.minSdkVersion.toInteger()

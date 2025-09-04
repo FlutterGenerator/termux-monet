@@ -2,8 +2,8 @@ apply plugin: 'com.android.library'
 apply plugin: 'maven-publish'
 
 android {
-    namespace = "com.termux.shared"
-    compileSdk = project.properties.compileSdk.toInteger()
+    namespace = 'com.termux.shared'
+    compileSdkVersion project.properties.compileSdkVersion.toInteger()
 
     dependencies {
         implementation "androidx.appcompat:appcompat:1.7.1"
