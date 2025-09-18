@@ -137,7 +137,7 @@ dependencies {
    // implementation 'androidx.viewpager:viewpager:1.1.0'
    // implementation 'androidx.viewpager2:viewpager2:1.1.0'
     implementation "com.google.android.material:material:1.13.0"
-    implementation 'com.google.guava:guava:33.4.8-jre'
+    implementation 'com.google.guava:guava:33.5.0-jre'
     implementation "io.noties.markwon:core:$markwonVersion"
     implementation "io.noties.markwon:ext-strikethrough:$markwonVersion"
     implementation "io.noties.markwon:linkify:$markwonVersion"
