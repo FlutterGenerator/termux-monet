@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:fitsSystemWindows="true">
+    android:fitsSystemWindows="true"
+    tools:ignore="VisualLintBounds">
 
     <RelativeLayout
         android:id="@+id/activity_termux_root_relative_layout"
@@ -50,7 +51,8 @@
                 android:layout_width="240dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="start"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                tools:ignore="VisualLintBounds">
 
                 <com.github.mmin18.widget.RealtimeBlurView
                     android:id="@+id/sessions_backgroundblur"

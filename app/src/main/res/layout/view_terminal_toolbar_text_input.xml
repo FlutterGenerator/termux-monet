@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal">
@@ -17,22 +18,21 @@
         app:cornerRadius="0dp"
         app:iconPadding="0dp" />
 
-<com.google.android.material.textfield.TextInputEditText
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/terminal_toolbar_text_input"
-    android:layout_width="0dp"
-    android:layout_height="match_parent"
-    android:layout_weight="1"
-    android:imeOptions="actionSend|flagNoFullscreen"
-    android:maxLines="1"
-    android:inputType="text"
-    android:importantForAutofill="no"
-    android:backgroundTint="@color/main_accent"
-    android:textColorHighlight="@color/hint_accent"
-    android:paddingTop="0dp"
-    android:textCursorDrawable="@null"
-    android:paddingBottom="0dp"
-    android:hint="@string/extra_keys_command_hint"
-    android:textColorHint="@color/hint_accent"
-    tools:ignore="LabelFor" />
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/terminal_toolbar_text_input"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:backgroundTint="@color/main_accent"
+        android:hint="@string/extra_keys_command_hint"
+        android:imeOptions="actionSend|flagNoFullscreen"
+        android:importantForAutofill="no"
+        android:inputType="text"
+        android:maxLines="1"
+        android:paddingTop="0dp"
+        android:paddingBottom="0dp"
+        android:textColorHighlight="@color/hint_accent"
+        android:textColorHint="#0277BD"
+        android:textCursorDrawable="@null"
+        tools:ignore="LabelFor,VisualLintTextFieldSize" />
 </LinearLayout>

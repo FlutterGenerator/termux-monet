@@ -33,7 +33,8 @@
     <uses-permission android:name="android.permission.READ_LOGS" />
     <uses-permission android:name="android.permission.DUMP" />
     <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS" />
-    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES"
+        tools:ignore="RequestInstallPackagesPolicy" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS" tools:ignore="ProtectedPermissions" />
     <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
@@ -63,7 +64,8 @@
             android:launchMode="singleTask"
             android:resizeableActivity="true"
             android:theme="@style/Theme.TermuxActivity.DayNight.NoActionBar"
-            tools:targetApi="26">
+            tools:targetApi="26"
+            tools:ignore="ObsoleteSdkInt">
         <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -99,7 +101,8 @@
             android:exported="false"
             android:parentActivityName=".app.TermuxActivity"
             android:resizeableActivity="true"
-            tools:targetApi="26" />
+            tools:targetApi="26"
+            tools:ignore="ObsoleteSdkInt" />
 
         <activity
             android:name=".app.activities.SettingsActivity"
@@ -119,7 +122,8 @@
             android:noHistory="true"
             android:resizeableActivity="true"
             android:taskAffinity="${TERMUX_PACKAGE_NAME}.filereceiver"
-            tools:targetApi="26">
+            tools:targetApi="26"
+            tools:ignore="ObsoleteSdkInt">
         </activity>
 
         <activity-alias

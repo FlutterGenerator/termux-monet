@@ -12,7 +12,7 @@
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimaryDark"
         android:gravity="center_vertical"
-        android:minHeight="?attr/actionBarSize"
+        android:minHeight="?android:attr/actionBarSize"
         android:theme="@style/ThemeOverlay.AppCompat.DayNight.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.DayNight"
         app:titleTextAppearance="@style/TextAppearance.Widget.BaseToolbar.Title"
