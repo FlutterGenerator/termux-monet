@@ -53,7 +53,7 @@
         android:hasFragileUserData="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:usesCleartextTraffic="true"
-        android:supportsRtl="false"
+        android:supportsRtl="true"
         android:theme="@style/Theme.TermuxApp.DayNight.DarkActionBar"
         tools:targetApi="29">
 
