@@ -233,7 +233,7 @@
         app with "This app is optimized to run in full screen." -->
         <meta-data
             android:name="android.max_aspect"
-            android:value="10.0" />
+            android:value="3.0" />
 
 
         <!-- https://developer.samsung.com/samsung-dex/modify-optimizing.html -->
