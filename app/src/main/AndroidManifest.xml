@@ -50,6 +50,7 @@
         android:hardwareAccelerated="true"
         android:largeHeap="true"
         android:requestLegacyExternalStorage="true"
+        android:requestRawExternalStorageAccess="true"
         android:hasFragileUserData="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:usesCleartextTraffic="true"
