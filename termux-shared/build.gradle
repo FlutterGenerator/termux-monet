@@ -87,7 +87,7 @@ dependencies {
     // Bumping commons-io to a version higher than 2.5
     // will cause runtime exceptions on android < 8 due
     // to missing classes like java.nio.file.Path.
-    implementation "commons-io:commons-io:2.20.0"
+    implementation "commons-io:commons-io:2.21.0"
 
     implementation project(":terminal-view")
 
