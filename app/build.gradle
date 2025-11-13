@@ -79,7 +79,6 @@ android {
         release {
             debuggable false
             minifyEnabled false
-            jniDebuggable false
             signingConfig = signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -87,7 +86,6 @@ android {
         debug {
             debuggable true
             minifyEnabled false
-            jniDebuggable false
             signingConfig = signingConfigs.debug
         }
     }
