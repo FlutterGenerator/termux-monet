@@ -73,7 +73,7 @@ dependencies {
     implementation 'androidx.annotation:annotation-experimental:1.5.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.2.1'
     implementation 'androidx.fragment:fragment-ktx:1.8.9'
-    implementation 'androidx.lifecycle:lifecycle-livedata-core-ktx:2.9.4'
+    implementation 'androidx.lifecycle:lifecycle-livedata-core-ktx:2.10.0'
     implementation 'androidx.loader:loader:1.1.0'
     implementation 'androidx.recyclerview:recyclerview:1.4.0'
     implementation 'androidx.savedstate:savedstate:1.4.0'
