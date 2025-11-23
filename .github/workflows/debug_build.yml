@@ -91,7 +91,7 @@ jobs:
             exit_on_error "Generate sha25sums failed for '$APK_VERSION_TAG' release."
           fi
 
-- name: Upload Gradle Problem Report
+      - name: Upload Gradle Problem Report
         uses: actions/upload-artifact@v5
         if: always()   # ВАЖНО: загружает даже при ошибке сборки
         with:
