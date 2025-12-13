@@ -284,7 +284,7 @@ public final class TermuxPropertyConstants {
 
     public static final int IVALUE_TERMINAL_MARGIN_HORIZONTAL_MAX = 100;
 
-    public static final int DEFAULT_IVALUE_TERMINAL_MARGIN_HORIZONTAL = 0;
+    public static final int DEFAULT_IVALUE_TERMINAL_MARGIN_HORIZONTAL = 6;
 
     /**
      * Defines the key for the terminal margin on top and bottom in dp units
@@ -296,7 +296,7 @@ public final class TermuxPropertyConstants {
 
     public static final int IVALUE_TERMINAL_MARGIN_VERTICAL_MAX = 100;
 
-    public static final int DEFAULT_IVALUE_TERMINAL_MARGIN_VERTICAL = 0;
+    public static final int DEFAULT_IVALUE_TERMINAL_MARGIN_VERTICAL = 2;
 
     /**
      * Defines the key for the terminal transcript rows
