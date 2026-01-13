@@ -15,7 +15,7 @@
 </div>
 <br />
 <div align="center">
-  <a href="https://www.android.com/versions/oreo-8-0/">
+  <a href="https://www.android.com/versions/oreo-8-1/">
     <img src="https://img.shields.io/static/v1?label=Android&message=8%2B&color=brightgreen&style=flat&logo=android&logoColor=white"/>
   </a>
   <a href="https://github.com/FlutterGenerator/termux-monet/commits/main">
