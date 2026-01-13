@@ -79,6 +79,7 @@ android {
         release {
             debuggable false
             minifyEnabled false
+            shrinkResources = true
             signingConfig = signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
@@ -142,7 +143,7 @@ dependencies {
     implementation "io.noties.markwon:linkify:$markwonVersion"
     implementation "io.noties.markwon:recycler:$markwonVersion"
     implementation 'com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava'
-    implementation 'com.github.mmin18:realtimeblurview:f54dc3c34d'
+   // implementation 'com.github.mmin18:realtimeblurview:f54dc3c34d'
     implementation project(":terminal-view")
     implementation project(":termux-shared")
     implementation project(":native-entrypoint")
