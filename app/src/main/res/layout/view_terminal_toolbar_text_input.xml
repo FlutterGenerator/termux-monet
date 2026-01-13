@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="horizontal">
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/terminal_toolbar_text_input_button"
         android:layout_width="50dp"
         android:layout_height="match_parent"
