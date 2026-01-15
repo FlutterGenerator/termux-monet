@@ -79,7 +79,7 @@ dependencies {
     implementation 'androidx.loader:loader:1.1.0'
     implementation 'androidx.recyclerview:recyclerview:1.4.0'
     implementation 'androidx.savedstate:savedstate:1.4.0'
-    implementation 'androidx.transition:transition:1.6.0'
+    implementation 'androidx.transition:transition:1.7.0'
     implementation 'androidx.versionedparcelable:versionedparcelable:1.2.1'
     implementation 'androidx.coordinatorlayout:coordinatorlayout:1.3.0'
     implementation 'androidx.vectordrawable:vectordrawable-animated:1.2.0'
