@@ -132,7 +132,8 @@ android {
                     (apkVersionTag ? apkVersionTag : project.ext.packageVariant + "-" + variant.buildType) +
                     "_" + (abi ? abi : "universal") +
                     ".apk"
-                        }
+            )
+        }
     }
 }
 
