@@ -16,6 +16,7 @@ ext {
 
 android {
     namespace = "com.termux"
+    buildToolsVersion '36.1.0'
     buildFeatures {
         buildConfig = true
         viewBinding = false
@@ -121,13 +122,17 @@ android {
         includeInApk = false
         includeInBundle = false
     }
-    buildToolsVersion '36.1.0'
-
-    applicationVariants.all { variant ->
-        variant.outputs.all { output ->
-            def abi = output.getFilter(com.android.build.OutputFile.ABI)
-            outputFileName = new File("termux-app_" + (apkVersionTag ? apkVersionTag : project.ext.packageVariant + "-" + variant.buildType.name) + "_" + (abi ? abi : "universal") + ".apk")
-        }
+    
+    androidComponents {
+    onVariants(selector().all()) { variant ->
+        variant.outputs.forEach { output ->
+            def abi = output.filters.find { it.filterType == com.android.build.api.variant.FilterConfiguration.FilterType.ABI }?.identifier
+            output.outputFileName.set(
+                    "termux-app_" +
+                    (apkVersionTag ? apkVersionTag : project.ext.packageVariant + "-" + variant.buildType) +
+                    "_" + (abi ? abi : "universal") +
+                    ".apk"
+                        }
     }
 }
 
