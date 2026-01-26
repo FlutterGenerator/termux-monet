@@ -14,6 +14,8 @@ ext {
     packageVariant = System.getenv("TERMUX_PACKAGE_VARIANT") ?: "apt-android-7" // Default: "apt-android-7"
 }
 
+def apkVersionTag = System.getenv("TERMUX_APK_VERSION_TAG") ?: ""
+
 android {
     namespace = "com.termux"
     buildToolsVersion '36.1.0'
@@ -23,7 +25,6 @@ android {
     }
     compileSdkVersion project.properties.compileSdkVersion.toInteger()
     def appVersionName = System.getenv("TERMUX_APP_VERSION_NAME") ?: ""
-    def apkVersionTag = System.getenv("TERMUX_APK_VERSION_TAG") ?: ""
     def splitAPKsForDebugBuilds = System.getenv("TERMUX_SPLIT_APKS_FOR_DEBUG_BUILDS") ?: "1"
     def splitAPKsForReleaseBuilds = System.getenv("TERMUX_SPLIT_APKS_FOR_RELEASE_BUILDS") ?: "1"
 
