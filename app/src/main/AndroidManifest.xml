@@ -1,6 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:installLocation="internalOnly"
+    android:sharedUserId="${TERMUX_PACKAGE_NAME}"
     android:sharedUserLabel="@string/shared_user_label">
 
     <uses-feature
@@ -26,7 +27,6 @@
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.INSTALL_PACKAGES" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
-    <uses-feature android:name="android.hardware.microphone" android:required="false" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
@@ -234,7 +234,7 @@
         app with "This app is optimized to run in full screen." -->
         <meta-data
             android:name="android.max_aspect"
-            android:value="3.0" />
+            android:value="10.0" />
 
 
         <!-- https://developer.samsung.com/samsung-dex/modify-optimizing.html -->
