@@ -1,7 +1,7 @@
 import java.util.regex.Pattern
 
 plugins {
-    id "com.android.application"
+    alias(libs.plugins.android.application)
 }
 
 ext {
@@ -17,7 +17,7 @@ ext {
 def apkVersionTag = System.getenv("TERMUX_APK_VERSION_TAG") ?: ""
 
 android {
-    namespace = "com.termux"
+    namespace = 'com.termux'
     buildToolsVersion '36.1.0'
     buildFeatures {
         buildConfig = true
@@ -140,27 +140,27 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.annotation:annotation:1.9.1'
-    implementation 'androidx.core:core:1.17.0'
-    implementation "androidx.drawerlayout:drawerlayout:1.2.0"
-    implementation "androidx.preference:preference:1.2.1"
-    implementation "androidx.viewpager:viewpager:1.1.0"
-    implementation "androidx.viewpager2:viewpager2:1.1.0"
-    implementation 'androidx.annotation:annotation-experimental:1.5.1'
-    implementation "com.google.android.material:material:1.14.0-alpha09"
-    implementation 'com.google.guava:guava:33.5.0-jre'
-    implementation "io.noties.markwon:core:$markwonVersion"
-    implementation "io.noties.markwon:ext-strikethrough:$markwonVersion"
-    implementation "io.noties.markwon:linkify:$markwonVersion"
-    implementation "io.noties.markwon:recycler:$markwonVersion"
-    implementation 'com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava'
-    implementation 'com.github.mmin18:realtimeblurview:f54dc3c34d'
+    implementation libs.annotation
+    implementation libs.core
+    implementation libs.drawerlayout
+    implementation libs.preference
+    implementation libs.viewpager
+    implementation libs.viewpager2
+    implementation libs.annotation.experimental
+    implementation libs.material
+    implementation libs.guava
+    implementation libs.markwon.core
+    implementation libs.ext.strikethrough
+    implementation libs.linkify
+    implementation libs.recycler
+    implementation libs.listenablefuture
+    implementation libs.realtimeblurview
     implementation project(":terminal-view")
     implementation project(":termux-shared")
     implementation project(":native-entrypoint")
-    testImplementation "junit:junit:4.13.2"
-    testImplementation 'org.robolectric:robolectric:4.16.1'
-    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.1.5'
+    testImplementation libs.junit
+    testImplementation libs.robolectric
+    coreLibraryDesugaring libs.desugar.jdk.libs
 }
 
 tasks.withType(JavaCompile).configureEach {

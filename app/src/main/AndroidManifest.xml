@@ -2,13 +2,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:installLocation="internalOnly"
     android:sharedUserId="${TERMUX_PACKAGE_NAME}"
-    android:sharedUserLabel="@string/shared_user_label">
+    android:sharedUserLabel="@string/shared_user_label"
+    android:sharedUserMaxSdkVersion="32"
+    tools:targetApi="33">
 
     <uses-feature
         android:name="android.hardware.touchscreen"
         android:required="false" />
     <uses-feature
         android:name="android.software.leanback"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.microphone"
         android:required="false" />
 
     <permission
@@ -56,7 +61,7 @@
         android:usesCleartextTraffic="true"
         android:supportsRtl="true"
         android:theme="@style/Theme.TermuxApp.DayNight.DarkActionBar"
-        tools:targetApi="29">
+        tools:targetApi="31">
 
         <activity
             android:name=".app.TermuxActivity"

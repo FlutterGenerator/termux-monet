@@ -54,7 +54,7 @@ tasks.withType(JavaCompile).configureEach {
 }
 
 dependencies {
-    implementation 'androidx.annotation:annotation:1.9.1'
+    implementation libs.annotation
 }
 
 tasks.register('sourceJar', Jar) {

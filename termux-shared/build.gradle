@@ -48,46 +48,47 @@ android {
 }
 
 dependencies {
-    testImplementation "junit:junit:4.13.2"
-    androidTestImplementation "androidx.test.ext:junit:1.3.0"
-    androidTestImplementation "androidx.test.espresso:espresso-core:3.7.0"
-    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.1.5'
+    testImplementation libs.junit
+    androidTestImplementation libs.ext.junit
+    androidTestImplementation libs.espresso.core
+    coreLibraryDesugaring libs.desugar.jdk.libs
 
-    implementation "androidx.appcompat:appcompat:1.7.1"
-    implementation "androidx.annotation:annotation:1.9.1"
+    implementation libs.appcompat
+    implementation libs.annotation
 
-    implementation "androidx.drawerlayout:drawerlayout:1.2.0"
+    implementation libs.drawerlayout
 
-    implementation "androidx.core:core:1.17.0"
-    implementation "com.google.android.material:material:1.14.0-alpha09"
-    implementation "com.google.guava:guava:33.5.0-jre"
-    implementation "io.noties.markwon:core:$markwonVersion"
-    implementation "io.noties.markwon:ext-strikethrough:$markwonVersion"
-    implementation "io.noties.markwon:linkify:$markwonVersion"
-    implementation "io.noties.markwon:recycler:$markwonVersion"
+    implementation libs.core
+    implementation libs.material
+    implementation libs.guava
+    implementation libs.markwon.core
+    implementation libs.ext.strikethrough
+    implementation libs.linkify
+    implementation libs.recycler
     //noinspection Aligned16KB
-    implementation "com.github.ChickenHook:RestrictionBypass:2.2"
+    implementation libs.restrictionbypass
 
-    implementation "androidx.window:window:1.5.1"
+    implementation libs.window
 
-    implementation "androidx.viewpager:viewpager:1.1.0"
-    implementation "androidx.viewpager2:viewpager2:1.1.0"
-    implementation 'androidx.annotation:annotation-experimental:1.5.1'
-    implementation 'androidx.constraintlayout:constraintlayout:2.2.1'
-    implementation 'androidx.fragment:fragment-ktx:1.8.9'
-    implementation 'androidx.lifecycle:lifecycle-livedata-core-ktx:2.10.0'
-    implementation 'androidx.loader:loader:1.1.0'
-    implementation 'androidx.recyclerview:recyclerview:1.4.0'
-    implementation 'androidx.savedstate:savedstate:1.4.0'
-    implementation 'androidx.transition:transition:1.7.0'
-    implementation 'androidx.versionedparcelable:versionedparcelable:1.2.1'
-    implementation 'androidx.coordinatorlayout:coordinatorlayout:1.3.0'
-    implementation 'androidx.vectordrawable:vectordrawable-animated:1.2.0'
+    implementation libs.viewpager
+    implementation libs.viewpager2
+    implementation libs.annotation.experimental
+    implementation libs.constraintlayout
+    implementation libs.fragment.ktx
+    implementation libs.lifecycle.livedata.core.ktx
+    implementation libs.loader
+    implementation libs.recyclerview
+    implementation libs.savedstate
+    implementation libs.transition
+    implementation libs.versionedparcelable
+    implementation libs.coordinatorlayout
+
+    implementation libs.vectordrawable.animated
 
     // Bumping commons-io to a version higher than 2.5
     // will cause runtime exceptions on android < 8 due
     // to missing classes like java.nio.file.Path.
-    implementation "commons-io:commons-io:2.21.0"
+    implementation libs.commons.io
 
     implementation project(":terminal-view")
 

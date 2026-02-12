@@ -1,28 +1,11 @@
-buildscript {
-    repositories {
-        google()
-        mavenCentral()
-        maven { url = "https://jitpack.io" }
-    }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:9.0.0'
-    }
+plugins {
+    alias(libs.plugins.android.application) apply false
 }
-ext {
-    markwonVersion='4.6.2'
+
+tasks.withType(JavaCompile).configureEach {
+    options.compilerArgs << "-Xlint:deprecation"
 }
-allprojects {
-    repositories {
-        google()
-        mavenCentral()
-        maven { url = "https://jitpack.io" }
-    }
 
-    tasks.withType(JavaCompile).configureEach {
-        options.compilerArgs << "-Xlint:deprecation"
-    }
-
-    tasks.withType(Delete).configureEach {
-        delete layout.buildDirectory
-    }
+tasks.withType(Delete).configureEach {
+    delete layout.buildDirectory
 }
