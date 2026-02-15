@@ -272,13 +272,13 @@
 
     <!-- Termux:Float App Preferences -->
     <string name="termux_float_preferences_title" translatable="false">&TERMUX_FLOAT_APP_NAME;</string>
-    <string name="termux_float_preferences_summary" translatable="false">Preferences for &TERMUX_FLOAT_APP_NAME; app</string>
+    <string name="termux_float_preferences_summary">Preferences for &TERMUX_FLOAT_APP_NAME; app</string>
 
 
 
     <!-- Termux:Tasker App Preferences -->
     <string name="termux_tasker_preferences_title" translatable="false">&TERMUX_TASKER_APP_NAME;</string>
-    <string name="termux_tasker_preferences_summary" translatable="false">Preferences for &TERMUX_TASKER_APP_NAME; app</string>
+    <string name="termux_tasker_preferences_summary">Preferences for &TERMUX_TASKER_APP_NAME; app</string>
 
 
 

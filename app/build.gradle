@@ -21,7 +21,6 @@ android {
     buildToolsVersion '36.1.0'
     buildFeatures {
         buildConfig = true
-        viewBinding = false
     }
     compileSdkVersion project.properties.compileSdkVersion.toInteger()
     def appVersionName = System.getenv("TERMUX_APP_VERSION_NAME") ?: ""
@@ -118,10 +117,6 @@ android {
         jniLibs {
             useLegacyPackaging = false
         }
-    }
-    dependenciesInfo {
-        includeInApk = false
-        includeInBundle = false
     }
 }
     

@@ -6,6 +6,7 @@ plugins {
 android {
     namespace = "com.termux.shared"
     compileSdkVersion project.properties.compileSdkVersion.toInteger()
+    ndkVersion = ndkVersion
 
     defaultConfig {
         minSdkVersion project.properties.minSdkVersion.toInteger()
@@ -40,10 +41,6 @@ android {
         ndkBuild {
             path file('src/main/cpp/Android.mk')
         }
-    }
-    ndkVersion = System.getenv("JITPACK_NDK_VERSION") ?: project.properties.ndkVersion
-    buildFeatures {
-        viewBinding = false
     }
 }
 

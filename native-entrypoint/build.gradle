@@ -7,7 +7,7 @@ android {
     namespace = "com.termux.nativeentrypoint"
 
     compileSdkVersion project.properties.compileSdkVersion.toInteger()
-    ndkVersion = System.getenv("JITPACK_NDK_VERSION") ?: project.properties.ndkVersion
+    ndkVersion = ndkVersion
 
     defaultConfig {
         minSdkVersion project.properties.minSdkVersion.toInteger()
@@ -43,9 +43,6 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
-    }
-    buildFeatures {
-        viewBinding = false
     }
 }
 
