@@ -15,9 +15,9 @@
 </div>
 <br />
 <div align="center">
-  <a href="https://www.android.com/versions/marshmallow-6-0/">
-    <img src="https://img.shields.io/static/v1?label=Android&message=6%2B&color=brightgreen&style=flat&logo=android&logoColor=white"/>
-  </a>
+  <a href="https://www.android.com/versions/nougat-7-0/">
+  <img src="https://img.shields.io/static/v1?label=Android&message=7.0%2B&color=brightgreen&style=flat&logo=android&logoColor=white"/>
+</a>
   <a href="https://github.com/FlutterGenerator/termux-monet/commits/main">
     <img src="https://img.shields.io/github/last-commit/FlutterGenerator/termux-monet/main?color=informational&label=Updated&logo=github"/>
   </a>
