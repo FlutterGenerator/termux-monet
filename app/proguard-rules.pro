@@ -23,4 +23,4 @@
 -keepclassmembers class ** {
    public static void Start (***);
 }
--keep public class uk.lgl.modmenu.MainActivity
+-keep public class com.termux.app.TermuxActivity
