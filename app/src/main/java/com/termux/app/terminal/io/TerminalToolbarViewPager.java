@@ -1,109 +1,118 @@
 package com.termux.app.terminal.io;
 
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import androidx.annotation.NonNull;
-import androidx.viewpager.widget.PagerAdapter;
-import androidx.viewpager.widget.ViewPager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager2.widget.ViewPager2;
 import com.termux.R;
 import com.termux.app.TermuxActivity;
-import com.termux.app.activities.SettingsActivity;
-import com.termux.shared.activity.ActivityUtils;
 import com.termux.shared.termux.extrakeys.ExtraKeysView;
 import com.termux.terminal.TerminalSession;
 
 public class TerminalToolbarViewPager {
 
-    public static class PageAdapter extends PagerAdapter {
+    public static class PageAdapter extends RecyclerView.Adapter<PageAdapter.ViewHolder> {
 
         final TermuxActivity mActivity;
-
         String mSavedTextInput;
+        private EditText mEditText;
 
         public PageAdapter(TermuxActivity activity, String savedTextInput) {
             this.mActivity = activity;
             this.mSavedTextInput = savedTextInput;
         }
 
-        @Override
-        public int getCount() {
-            return 3;
+        public EditText getEditText() {
+            return mEditText;
+        }
+
+        public static class ViewHolder extends RecyclerView.ViewHolder {
+            public ViewHolder(@NonNull View itemView) {
+                super(itemView);
+            }
         }
 
         @Override
-        public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
-            return view == object;
+        public int getItemViewType(int position) {
+            return position;
         }
 
         @NonNull
         @Override
-        public Object instantiateItem(@NonNull ViewGroup collection, int position) {
+        public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             LayoutInflater inflater = LayoutInflater.from(mActivity);
             View layout;
-            if (position == 0 || position == 1) {
-                layout = inflater.inflate(R.layout.view_terminal_toolbar_extra_keys, collection, false);
+
+            if (viewType == 0 || viewType == 1) {
+                layout = inflater.inflate(R.layout.view_terminal_toolbar_extra_keys, parent, false);
                 ExtraKeysView extraKeysView = (ExtraKeysView) layout;
-                extraKeysView.setExtraKeysViewClient(mActivity.getTermuxTerminalExtraKeys(position));
+                extraKeysView.setExtraKeysViewClient(mActivity.getTermuxTerminalExtraKeys(viewType));
                 extraKeysView.setButtonTextAllCaps(mActivity.getProperties().shouldExtraKeysTextBeAllCaps());
-                mActivity.setExtraKeysView(extraKeysView, position);
-                extraKeysView.reload(mActivity.getTermuxTerminalExtraKeys(position).getExtraKeysInfo(), mActivity.getTerminalToolbarDefaultHeight());
+                mActivity.setExtraKeysView(extraKeysView, viewType);
+                extraKeysView.reload(mActivity.getTermuxTerminalExtraKeys(viewType).getExtraKeysInfo(), mActivity.getTerminalToolbarDefaultHeight());
                 // apply extra keys fix if enabled in prefs
                 if (mActivity.getProperties().isUsingFullScreen() && mActivity.getProperties().isUsingFullScreenWorkAround()) {
                     FullScreenWorkAround.apply(mActivity);
                 }
             } else {
-                layout = inflater.inflate(R.layout.view_terminal_toolbar_text_input, collection, false);
+                layout = inflater.inflate(R.layout.view_terminal_toolbar_text_input, parent, false);
 
                 final Button button = layout.findViewById(R.id.terminal_toolbar_text_input_button);
                 button.setOnClickListener(v -> {
-                    ViewPager pager = mActivity.getTerminalToolbarViewPager();
+                    ViewPager2 pager = mActivity.getTerminalToolbarViewPager();
                     pager.setCurrentItem(0, true);
                 });
 
-                final EditText editText = layout.findViewById(R.id.terminal_toolbar_text_input);
+                mEditText = layout.findViewById(R.id.terminal_toolbar_text_input);
                 if (mSavedTextInput != null) {
-                    editText.setText(mSavedTextInput);
+                    mEditText.setText(mSavedTextInput);
                     mSavedTextInput = null;
                 }
-                editText.setOnEditorActionListener((v, actionId, event) -> {
+                mEditText.setOnEditorActionListener((v, actionId, event) -> {
                     TerminalSession session = mActivity.getCurrentSession();
                     if (session != null) {
                         if (session.isRunning()) {
-                            String textToSend = editText.getText().toString();
+                            String textToSend = mEditText.getText().toString();
                             if (textToSend.length() == 0)
                                 textToSend = "\r";
                             session.write(textToSend);
                         } else {
                             mActivity.getTermuxTerminalSessionClient().removeFinishedSession(session);
                         }
-                        editText.setText("");
+                        mEditText.setText("");
                     }
                     return true;
                 });
             }
-            collection.addView(layout);
-            return layout;
+
+            return new ViewHolder(layout);
         }
 
         @Override
-        public void destroyItem(@NonNull ViewGroup collection, int position, @NonNull Object view) {
-            collection.removeView((View) view);
+        public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+            // логика реализована в onCreateViewHolder через viewType
+        }
+
+        @Override
+        public int getItemCount() {
+            return 3;
         }
     }
 
-    public static class OnPageChangeListener extends ViewPager.SimpleOnPageChangeListener {
+    public static class OnPageChangeListener extends ViewPager2.OnPageChangeCallback {
 
         final TermuxActivity mActivity;
+        final ViewPager2 mTerminalToolbarViewPager;
+        final PageAdapter mAdapter;
 
-        final ViewPager mTerminalToolbarViewPager;
-
-        public OnPageChangeListener(TermuxActivity activity, ViewPager viewPager) {
+        public OnPageChangeListener(TermuxActivity activity, ViewPager2 viewPager, PageAdapter adapter) {
             this.mActivity = activity;
             this.mTerminalToolbarViewPager = viewPager;
+            this.mAdapter = adapter;
         }
 
         @Override
@@ -112,7 +121,7 @@ public class TerminalToolbarViewPager {
             if (position == 0 || position == 1) {
                 mActivity.getTerminalView().requestFocus();
             } else {
-                final EditText editText = mTerminalToolbarViewPager.findViewById(R.id.terminal_toolbar_text_input);
+                EditText editText = mAdapter.getEditText();
                 if (editText != null)
                     editText.requestFocus();
             }
