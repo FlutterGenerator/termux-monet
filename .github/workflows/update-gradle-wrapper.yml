@@ -5,15 +5,22 @@ on:
   schedule:
     - cron: "0 0 * * 0"
 
+permissions:
+  contents: write
+
 jobs:
   update-gradle-wrapper:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Ensure gradlew is executable
+        run: chmod +x ./gradlew
 
       - name: Update Gradle Wrapper
-        uses: gradle-update/update-gradle-wrapper-action@v1
+        uses: gradle-update/update-gradle-wrapper-action@v2
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           set-distribution-checksum: false
