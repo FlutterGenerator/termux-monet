@@ -148,7 +148,7 @@
             android:layout_alignParentBottom="true"
             android:background="@color/background_accent"/>
 
-        <androidx.viewpager.widget.ViewPager
+        <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/terminal_toolbar_view_pager"
             android:visibility="gone"
             android:layout_width="match_parent"
