@@ -75,7 +75,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.core.view.WindowInsetsCompat.Type;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager2.widget.ViewPager2;
 import java.util.Arrays;
 
 /**
@@ -555,7 +555,7 @@ public final class TermuxActivity extends AppCompatActivity implements ServiceCo
     private void setTerminalToolbarView(Bundle savedInstanceState) {
         mTermuxTerminalExtraKeys = new TermuxTerminalExtraKeys(this, mTerminalView, mTermuxTerminalViewClient, mTermuxTerminalSessionActivityClient, 0);
         mTermuxTerminalExtraKeys2 = new TermuxTerminalExtraKeys(this, mTerminalView, mTermuxTerminalViewClient, mTermuxTerminalSessionActivityClient, 1);
-        final ViewPager terminalToolbarViewPager = getTerminalToolbarViewPager();
+        final ViewPager2 terminalToolbarViewPager = getTerminalToolbarViewPager();
         if (mPreferences.shouldShowTerminalToolbar())
             terminalToolbarViewPager.setVisibility(View.VISIBLE);
         ViewGroup.LayoutParams layoutParams = terminalToolbarViewPager.getLayoutParams();
@@ -564,12 +564,13 @@ public final class TermuxActivity extends AppCompatActivity implements ServiceCo
         String savedTextInput = null;
         if (savedInstanceState != null)
             savedTextInput = savedInstanceState.getString(ARG_TERMINAL_TOOLBAR_TEXT_INPUT);
-        terminalToolbarViewPager.setAdapter(new TerminalToolbarViewPager.PageAdapter(this, savedTextInput));
-        terminalToolbarViewPager.addOnPageChangeListener(new TerminalToolbarViewPager.OnPageChangeListener(this, terminalToolbarViewPager));
+        TerminalToolbarViewPager.PageAdapter pageAdapter = new TerminalToolbarViewPager.PageAdapter(this, savedTextInput);
+        terminalToolbarViewPager.setAdapter(pageAdapter);
+        terminalToolbarViewPager.registerOnPageChangeCallback(new TerminalToolbarViewPager.OnPageChangeListener(this, terminalToolbarViewPager, pageAdapter));
     }
 
     public void setTerminalToolbarHeight() {
-        final ViewPager terminalToolbarViewPager = getTerminalToolbarViewPager();
+        final ViewPager2 terminalToolbarViewPager = getTerminalToolbarViewPager();
         View extraKeysBackgroundBlur = findViewById(R.id.extrakeys_backgroundblur);
         View extraKeysBackground = findViewById(R.id.extrakeys_background);
         if (terminalToolbarViewPager == null)
@@ -593,7 +594,7 @@ public final class TermuxActivity extends AppCompatActivity implements ServiceCo
     }
 
     public void toggleTerminalToolbar() {
-        ViewPager terminalToolbarViewPager = getTerminalToolbarViewPager();
+        ViewPager2 terminalToolbarViewPager = getTerminalToolbarViewPager();
         if (terminalToolbarViewPager == null) return;
     
         boolean showNow = mPreferences.toogleShowTerminalToolbar();
@@ -925,8 +926,8 @@ public final class TermuxActivity extends AppCompatActivity implements ServiceCo
         return (DrawerLayout) findViewById(R.id.drawer_layout);
     }
 
-    public ViewPager getTerminalToolbarViewPager() {
-        return (ViewPager) findViewById(R.id.terminal_toolbar_view_pager);
+    public ViewPager2 getTerminalToolbarViewPager() {
+        return (ViewPager2) findViewById(R.id.terminal_toolbar_view_pager);
     }
 
     public float getTerminalToolbarDefaultHeight() {
