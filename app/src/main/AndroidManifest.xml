@@ -56,8 +56,7 @@
         android:debuggable="true"
         android:supportsRtl="false"
         android:theme="@style/Theme.TermuxApp.DayNight.DarkActionBar"
-        tools:targetApi="o"
-android:requestLegacyExternalStorage="true">
+        tools:targetApi="o">
 
         <activity
             android:name=".app.TermuxActivity"
